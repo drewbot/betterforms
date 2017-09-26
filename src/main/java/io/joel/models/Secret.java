@@ -1,7 +1,15 @@
 package io.joel.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "secrets")
 public class Secret {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String owner;
     private String message;
 
