@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
     <h1>Welcome to spring!</h1>
+
+    <form action="/" th:object="${secret}" method="post">
+        <input type="text" th:field="*{owner}" placeholder="Owner"/>
+        <br />
+        <input type="text" th:field="*{message}" placeholder="Message"/>
+        <br />
+        <input type="submit" value="Keep the Secret" />
+    </form>
+
+    <ul>
+        <li th:each="mySecret : ${mySecrets}" th:text="${mySecret.message}"></li>
+    </ul>
 </body>
 </html>
