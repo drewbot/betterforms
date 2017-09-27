@@ -18,32 +18,33 @@
         </form>
 
         <ul>
-            <li th:each="mySecret : ${mySecrets}" th:text="${mySecret.message}"></li>
+            <li th:each="mySecret : ${mySecrets}">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" th:attr="data-target='#' + ${mySecret.id}">
+                    Launch demo modal
+                </button>
+                <div class="modal fade" th:id="${mySecret.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            </div>
+                            <div class="modal-body" th:text="${mySecret.message}">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#unicorn">
-            Launch demo modal
-        </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="unicorn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script type="application/javascript"
