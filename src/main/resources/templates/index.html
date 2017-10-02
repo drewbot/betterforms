@@ -19,7 +19,11 @@
 
         <ul>
             <li th:each="mySecret : ${mySecrets}">
-                <a th:href="@{'/secret/' + ${mySecret.id}}">aslkdjalksjd</a>
+                <a th:href="@{'/secret/' + ${mySecret.id}}" th:text="${mySecret.message}"></a>
+
+                <form th:action="@{'/secret/' + ${mySecret.id} + '/delete'}" method="get">
+                    <input type="submit" value="X" />
+                </form>
             </li>
         </ul>
     </div>
