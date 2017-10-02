@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/").hasRole("USER")
+                    .antMatchers("/**").hasRole("USER")
                     .and()
                 .formLogin()
                     .loginPage("/login")
@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationFailureHandler failureHandler() {
         return (request, response, exception) -> {
             request.getSession().setAttribute("error", "Cannot login with provided credentials.");
+            response.sendRedirect("/login");
         };
     }
 
