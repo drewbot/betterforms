@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <h1>Signup for my app fool</h1>
+    <form action="/signup" method="post" th:object="${user}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="text" th:field="*{username}" />
+        <br />
+        <input type="password" th:field="*{password}" />
+        <br />
+        <input type="submit" value="Signup" />
+    </form>
+</body>
+</html>
