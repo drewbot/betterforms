@@ -24,6 +24,8 @@ public class User implements UserDetails {
     // a way to get them at some point
     // private List<Secret> secrets;
 
+    private boolean active;
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -85,5 +87,13 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
