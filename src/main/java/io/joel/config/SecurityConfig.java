@@ -46,16 +46,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/webjars/**");
+        web.ignoring().antMatchers("/css/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/secret/**").hasRole("USER")
-                    .antMatchers("/signup").permitAll()
-                    .antMatchers("/").permitAll()
+                    .antMatchers("/", "/signup").permitAll()
+                    .anyRequest().authenticated()
+                    //.antMatchers("/secret/**").hasRole("USER")
                     .and()
                 .formLogin()
                     .loginPage("/login")

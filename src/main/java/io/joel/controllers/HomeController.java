@@ -25,13 +25,15 @@ public class HomeController {
     @RequestMapping(value = "/")
     public String index(Model model,
                         Principal principal) {
-        User me = userRepo.findByUsername(principal.getName());
+        if (principal != null) {
+            User me = userRepo.findByUsername(principal.getName());
+            model.addAttribute("mySecrets", secretRepo.findAllByOwner(me));
+        }
         model.addAttribute("secret", new Secret());
-        model.addAttribute("mySecrets", secretRepo.findAllByOwner(me));
         return "index";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/secret", method = RequestMethod.POST)
     public String index(@ModelAttribute Secret secret,
                         Principal principal) {
         User me = userRepo.findByUsername(principal.getName());

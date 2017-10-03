@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface SecretRepository extends CrudRepository<Secret, Long>{
     List<Secret> findAllByOwner(User owner);
+    Secret findByIdAndOwner(long id, User owner);
 }

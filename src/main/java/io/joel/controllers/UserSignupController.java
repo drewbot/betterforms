@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class UserController {
+public class UserSignupController {
 
     @Autowired
     private UserRepository userRepo;
@@ -25,13 +25,13 @@ public class UserController {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping(name = "/signup", method = RequestMethod.GET)
-    public String signupForm(Model model) {
+    public String signupFormX(Model model) {
         model.addAttribute("user", new User());
         return "signup";
     }
 
     @RequestMapping(name = "/signup", method = RequestMethod.POST)
-    public String signupForm(@ModelAttribute User user) {
+    public String signupFormX(@ModelAttribute User user) {
         // Role
         Role userRole = roleRepo.findByName("ROLE_USER");
         // set the password to the encrypted version
